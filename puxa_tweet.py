@@ -20,18 +20,16 @@ pesquisa = "#BBB21 -filter:retweets"  # Filtra pela # e remove retweets
 ultimos_tweets = []
 max_id = None
 
-for pesquisa in range(numero_tweets//100):
+for pesquisa in range(numero_tweets // 100):
     # Le os tweets em ordem decrescente
     tweets = api.search(q=pesquisa,
-                        tweet_mode="extended", lang='pt', max_id = max_id,
-                               count=100, include_entities=False)
+                        tweet_mode="extended", lang='pt', max_id=max_id,
+                        count=100, include_entities=False)
 
     ultimos_tweets += [status._json for status in tweets]
-    max_id = ultimos_tweets[-1]["id"]
+    max_id = ultimos_tweets[-1]["id"] - 1
     if pesquisa % freq_printa:
         print(max_id)
-
-
 
 with open("tweets_json_bbb21.txt", "w") as arquivo:
     arquivo.write(json.dumps(ultimos_tweets, indent=4))
