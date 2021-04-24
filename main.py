@@ -1,6 +1,9 @@
 import pandas as pd
+import unidecode
 
-df = pd.read_json("tweets_json_bbb21.txt")
+# Usar unidecode para remover caracter especial do texto
+
+df = pd.read_csv("tweets_bbb21.csv")
 id = df['id'].unique()
 print(df.shape)
 print(len(id))
