@@ -38,7 +38,7 @@ def main():
     file_exists = os.path.isfile(arquivo_saida)
 
     # Busca
-    numero_buscas = 1e3
+    numero_buscas = 300
     buscas = 0
 
     pesquisa = "bbb21 -filter:retweets"
@@ -65,8 +65,11 @@ def main():
                 buscas += 1
                 max_id = busca[-1]['id'] - 1
                 writer.writerows(busca)
+                print(f"Adicionado {len(busca)} novas entradas ao arquivo")
         except tweepy.RateLimitError:
             print("Limite da API excedido")
+        finally:
+            print(f"Scrapping finalizado em {buscas} buscas.")
 
 
 if __name__ == '__main__':

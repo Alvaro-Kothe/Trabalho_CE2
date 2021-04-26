@@ -1,9 +1,8 @@
 import pandas as pd
-import unidecode
 
-# Usar unidecode para remover caracter especial do texto
 
-df = pd.read_csv("tweets_bbb21.csv")
-id = df['id'].unique()
-print(df.shape)
-print(len(id))
+if __name__ == '__main__':
+
+    df = pd.read_csv("tweets_bbb21.csv")
+
+    print(df.shape)
