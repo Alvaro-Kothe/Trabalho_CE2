@@ -1,0 +1,2 @@
+def tratamento(s):
+    pass
