@@ -2,6 +2,7 @@ import re
 import unidecode
 from nltk import word_tokenize
 from nltk.corpus import stopwords
+from nltk.stem.snowball import SnowballStemmer
 
 # Tokeniza : nltk.word_tokenize(string)
 
@@ -54,20 +55,7 @@ def normalize(string, pattern=patterns):
     return tokens
 
 
-if __name__ == '__main__':
-    # Testes
-    s = """***
+def remove_radical(tokens):
+    stemmer = SnowballStemmer('portuguese')
+    return [stemmer.stem(token) for token  in tokens]
 
-Se o próximo Paredão for este, que será ELIMINADO ???
-
-Arthur X Gilberto X Pocah
-
-#BBB21 #RedeBBB #ForaViihTube #FestaBBB
-8 MILHÕES DO RODOLFFO / PARABÉNS KERLINE /
-PARABENS CAON / Mais Você / Alok"""
-    outro_tweet = """genteeee eu amei o jogo KKKSKSKSKSK a voz da juliette ""vai te lascar pra lá"" #BBB21 https://t.co/VJ1xNNL4M7"""
-    tok = word_tokenize(outro_tweet)
-    print(remove_stop_words(tok))
-    print(to_ascii(tok))
-    print(to_lowercase(s))
-    print(normalize(s))
