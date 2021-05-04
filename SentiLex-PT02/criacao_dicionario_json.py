@@ -1,5 +1,8 @@
 import json
 import re
+
+from src import tratamento_string
+
 sentilexpt = open('SentiLex-flex-PT02.txt', encoding='utf-8')
 
 #Criando um dicionário de palavras com a respectiva polaridade.
@@ -17,14 +20,14 @@ def find_all(a_str, sub):
 for i in sentilexpt.readlines():
   pos_ponto = i.find('.')
   palavra = (i[:pos_ponto])
-  palavra,radical = palavra.split(',')
+  palavra,radical = tratamento_string.to_ascii( palavra.split(','))
   polaridades = re.findall(r"N[01]=(.+?);",i)
   polaridade = sum(float(x) for x in polaridades)/len(polaridades)
   dic_palavra_polaridade[palavra] = polaridade
   if radical not in dic_radical_polaridade:
     dic_radical_polaridade[radical] = polaridade
 
-print(list( dic_palavra_polaridade.items())[0:12])
+print(list(dic_palavra_polaridade.items())[0:12])
 print(len(dic_palavra_polaridade))
 print(len(dic_radical_polaridade))
 
