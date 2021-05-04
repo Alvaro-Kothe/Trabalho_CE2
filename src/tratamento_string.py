@@ -18,11 +18,12 @@ def remove_patterns(string, patterns):
     return re.sub(filtro, '', string)
 
 
-def remove_stop_words(tokens):
+stopwordpt = stopwords.words('portuguese')
+stopwordpt = set(stopwordpt)
+
+def remove_stop_words(tokens, stopwords_=stopwordpt):
     """Remover as Stopwords das palavras tokenizadas"""
-    stopwordpt = stopwords.words('portuguese')
-    stopwordpt = set(stopwordpt)
-    new_words = [palavra for palavra in tokens if palavra not in stopwordpt]
+    new_words = [palavra for palavra in tokens if palavra not in stopwords_]
     return new_words
 
 
