@@ -8,7 +8,8 @@ from nltk.stem.snowball import SnowballStemmer
 
 patterns = [
     r"http\S+",  # Links
-    "#?bbb21" # tag bbb
+    "#?bbb21",  # tag bbb
+    "big brother"
 ]
 
 
@@ -18,8 +19,13 @@ def remove_patterns(string, patterns):
     return re.sub(filtro, '', string)
 
 
+
 stopwordpt = stopwords.words('portuguese')
 stopwordpt = set(stopwordpt)
+
+stopwords_add = set(["q", "pq", "vc", "ja", "ai", "ne", "bbb", "ta", "N"])
+
+stopwordpt.update(stopwords_add)
 
 def remove_stop_words(tokens, stopwords_=stopwordpt):
     """Remover as Stopwords das palavras tokenizadas"""
