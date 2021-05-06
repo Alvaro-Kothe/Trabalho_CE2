@@ -4,10 +4,10 @@ import json
 
 candidatos = ('Gil', 'Juliette', 'Camilla',
               'Pocah', 'Fiuk', 'Arthur', "Karol",
-              "Sarah")
+              "Sarah", "Viih Tube")
 patterns = ("gil", "juliet{1,2}e", 'camil{1,2}a',
             "pocah", "fiuk", "arthur", "[kc]arol",
-            "sarah?")
+            "sarah?","vi{1,2}h? tube")
 
 
 def dicionario_candidato(string, lista=candidatos, repattern=patterns):
